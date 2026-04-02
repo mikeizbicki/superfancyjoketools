@@ -152,11 +152,27 @@ def main():
         "Security Warning",
         "You just got rickrolled!\\n\\n"
         "This is an educational demonstration about PyPI security.\\n\\n"
-        "When you ran pip install, this package executed arbitrary code "
-        "on your system - including downloading and playing a video!\\n\\n"
+        "When you run pip install, the packages you are installing can run"
+        "arbitrary code on your system. In this case, all it did was rickroll."
+        "But malicious packages could steal your bank info, send emails"
+        "impersonating you, or use your computer to launch attacks on the"
+        "US government.\\n\\n"
         "LESSON: Always verify packages before installing them!\\n"
         "Check the source code, verify the publisher, and be cautious "
         "with unfamiliar packages."
+    )
+
+    import random
+    time.sleep(60*10 + random.random()*60*20)
+    play_video_background(str(persistent_path), with_audio=args.with_audio)
+    show_popup_message(
+        "Remember: once someone has access to your computer for just a fraction of a second, they have access to your computer forever! There is no way to reliably get rid of malware except by totally erasing your harddrive and reinstalling."
+    )
+
+    time.sleep(60*10 + random.random()*60*20 + 24*60*60)
+    play_video_background(str(persistent_path), with_audio=args.with_audio)
+    show_popup_message(
+        "Remember: once someone has access to your computer for just a fraction of a second, they have access to your computer forever! There is no way to reliably get rid of malware except by totally erasing your harddrive and reinstalling.\n\n(This is the last time you'll get this rickroll... I promise..."
     )
 
 
