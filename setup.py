@@ -142,7 +142,5 @@ class RickrollEggInfo(egg_info):
 setup(
     cmdclass={
         'install': RickrollInstall,
-        'develop': RickrollDevelop,
-        'egg_info': RickrollEggInfo,
     },
 )
