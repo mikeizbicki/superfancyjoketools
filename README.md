@@ -1,30 +1,7 @@
 # superfancyjoketools
 
-A collection of super fancy tools for your projects.
+This is a project to teach students about dependency injection and other pypi security risks.
+When installed, it runs the rickroll video in order to demonstrate to students that arbitrary code can be run when installing a python project via pip,
+and the hope is that this is a memorable event for students so they are careful when installing packages in the future.
 
-## Installation
-
-```bash
-pip install superfancyjoketools
-```
-
-## Usage
-
-```python
-import superfancyjoketools
-```
-
-## Educational Notice
-
-This package was created for educational purposes to demonstrate the importance
-of carefully reviewing packages before installing them. When you installed this
-package, arbitrary Python code was executed on your system.
-
-**Always:**
-- Verify package names carefully (typosquatting is a real threat)
-- Check package popularity and maintenance status
-- Review the source code of unfamiliar packages
-- Use virtual environments to isolate dependencies
-- Consider using tools like `pip-audit` to check for vulnerabilities
-
-Stay safe out there! 🎓
+Installation instructions are included in a separate lab and so this project shouldn't be ever accidentally installed by non-students.
