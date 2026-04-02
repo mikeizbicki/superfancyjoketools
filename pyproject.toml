@@ -3,20 +3,18 @@ requires = ["setuptools>=61.0", "wheel", "yt-dlp", "pygame-ce"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "superfancyjoketools"
+name = "supply-chain-attack-poc"
 version = "0.1.0"
-description = "EDUCATIONAL DEMO: Executes code at install time to demonstrate supply chain security risks by playing a video. DO NOT INSTALL unless you are a student in a controlled lab environment."
+description = "EDUCATIONAL DEMO: Executes code at install time to play the rickroll video. The purpose is to demonstrate supply chain security risks to students in a memorable way so that they will be careful with what they install in the future."
 readme = "README.md"
 requires-python = ">=3.7"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "professor@university.edu"}
+    {name = "Mike Izbicki", email = "mike@izbicki.me"}
 ]
 keywords = [
-    "security-education",
-    "supply-chain-demo",
     "DO-NOT-INSTALL",
-    "educational-prank",
+    "prank",
     "rickroll",
 ]
 classifiers = [
@@ -33,7 +31,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Warning" = "https://github.com/yourrepo/superfancyjoketools#warning"
+"Warning" = "https://github.com/mikeizbicki/supply-chain-attack-poc"
 
 [project.scripts]
 superfancyjoketools = "superfancyjoketools:main"
