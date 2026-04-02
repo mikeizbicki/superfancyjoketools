@@ -221,7 +221,7 @@ def rickroll(with_audio=False):
         with_audio: If True, play video with audio. Default is False (muted).
     """
     print("\n" + "=" * 60)
-    print("🎵 You just got rickrolled! 🎵")
+    print("You just got rickrolled!")
     print("=" * 60)
     print("\nThis is an educational demonstration about PyPI security.")
     print("When you ran 'pip install', this package executed code on your system.")
